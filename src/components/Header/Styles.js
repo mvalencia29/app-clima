@@ -8,7 +8,7 @@ export const HeaderContainer = styled.div`
 `;
 
 export const HeaderText = styled.p`
-  font-size: 23px;
+  font-size: 25px;
   --webkit-appearance: none;
   margin: 0;
   color: #ffff;
