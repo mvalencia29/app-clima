@@ -9,7 +9,3 @@
 .is-dark-mode {
   --color: #1d2029;
 }
-
-p {
-    background: var(--color);
-}
