@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 
 function App() {
-  const handleChangeColor = () => {
-    document.body.classList.toggle("is-dark-mode");
-  };
+
+  const [loading, setLoading] = useState(false)
 
   return (
     <div className="App">
-      <Header />
-      <Main />
+      <Header loading={loading} />
+      <Main loading={loading} setLoading={setLoading} />
     </div>
   );
 }

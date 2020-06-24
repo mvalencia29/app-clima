@@ -1,14 +1,11 @@
 import { urlApiGetCountries } from "../Constants/Constants";
 
-export async function callApiCountry(callback) {
+export default async function callApiCountry() {
+
   try {
     const response = await fetch(urlApiGetCountries);
     return await response.json();
   } catch (error) {
-    return new Error("FUGYHIJOKK");
+    return "Hubo un Error";
   }
-}
-
-export async function analyzeResponseApiCountry(response) {
-  
 }
