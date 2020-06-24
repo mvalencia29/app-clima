@@ -1,8 +1,10 @@
 import React from "react";
-import { MainContainer } from "./Styles";
+import MainContainer from "./Styles";
+import Form from "./Form/Form";
+import Weather from "./Weather/Weather";
 
 const Main = () => {
-  return <MainContainer>Hola</MainContainer>;
+  return <MainContainer><Form /><Weather /></MainContainer>;
 };
 
 export default Main;
