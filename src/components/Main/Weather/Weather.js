@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   WeatherContainer,
   WeatherTitle,
@@ -11,9 +11,24 @@ import {
   WeatherContentTextMinTemperature,
   WeatherContentTextFooter,
 } from "./Styles";
-import imagen from "../../../images/verano.png";
 
 const Weather = () => {
+  const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    chooseImage();
+  }, []);
+
+  const chooseImage = (icon) => {
+    switch(icon){
+      case : 
+
+    }
+    if(icon === "03n" || icon === "03d"){
+
+    }
+  };
+
   return (
     <WeatherContainer>
       <WeatherTitle>
@@ -21,7 +36,12 @@ const Weather = () => {
         <WeatherTitleCountry>co</WeatherTitleCountry>
       </WeatherTitle>
       <WeatherContent>
-        <img src={imagen} width="160px" height="160px" alt="Imagen" />
+        <img
+          src="https://image.flaticon.com/icons/svg/143/143792.svg"
+          width="160px"
+          height="160px"
+          alt="Imagen"
+        />
         <WeatherContentText>
           <WeatherContentTextTemperature>
             12.28 °C
