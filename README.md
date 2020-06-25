@@ -3,4 +3,4 @@ Aplicacion web para poder ver el clima de las diferentes partes del mundo. Utili
 
 # Preview 
 
-https://github.com/mvalencia29/app-clima/edit/master/banner.png
+![Alt text](https://github.com/mvalencia29/app-clima/edit/master/banner.png "Optional title")
