@@ -1,5 +1,5 @@
 # Clima App
-Aplicacion web para poder ver el clima de las diferentes partes del mundo. Utilizando React, Flex Box, Css Grid Layout y styled components.
+Aplicacion web para poder ver el clima de las diferentes partes del mundo. Utilizando React, Flex Box, Css Grid Layout, styled components, Material UI.
 
 # Preview 
 https://awesome-swartz-75f8bd.netlify.app/
