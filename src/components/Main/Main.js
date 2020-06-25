@@ -16,10 +16,8 @@ const Main = (props) => {
 
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => {
-      getCountries(countries, setCountries);
-      setLoading(false);
-    }, 5000);
+    getCountries(countries, setCountries);
+    setLoading(false);
   }, []);
 
   return (

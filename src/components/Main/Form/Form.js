@@ -7,56 +7,76 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 const Form = (props) => {
   const { countries, loading } = props;
 
+  const [formData, setDataForm] = useState({
+    country: null,
+    city: null,
+  });
+
   const [inputsDisabled, setInputsDisabled] = useState({
     country: false,
-    city: false,
   });
 
   useEffect(() => {
     if (loading) {
       setInputsDisabled({
         country: true,
-        city: true,
       });
     } else {
       setInputsDisabled({
         country: false,
-        city: false,
       });
     }
   }, [loading]);
 
-  const { country, city } = inputsDisabled;
+  const { country, city } = formData;
+
+  useEffect(() => {
+    if (country !== null) {
+      console.log("Consulta del pais");
+    } else {
+      setDataForm({ ...formData, city: null });
+    }
+  }, [country]);
 
   return (
     <FormContainer>
       <Autocomplete
-        id="combo-box-demo"
+        onChange={(event, newValue) => {
+          setDataForm({ ...formData, country: newValue });
+        }}
         options={countries.data}
-        getOptionLabel={(option) => option.name}
+        getOptionLabel={(option) =>
+          typeof option === "string" ? option : option.name
+        }
         renderInput={(params) => (
           <TextField
             {...params}
             margin="normal"
             label="Pais"
             variant="outlined"
-            disabled={country ? true : false}
           />
         )}
+        disabled={inputsDisabled.country ? true : false}
       />
       <Autocomplete
-        id="combo-box-demo"
+        value={country === null ? null : city}
+        onChange={(event, newValue) => {
+          setDataForm({ ...formData, city: newValue });
+        }}
         options={countries.data}
-        getOptionLabel={(option) => option.name}
+        getOptionLabel={(option) =>
+          typeof option === "string" ? option : option.name
+        }
         renderInput={(params) => (
           <TextField
             {...params}
             margin="normal"
-            label="Pais"
+            label="Ciudad"
             variant="outlined"
-            disabled={city ? true : false}
           />
         )}
+        disabled={country === null ? true : false}
+        name="city"
       />
       <Button
         fullWidth
