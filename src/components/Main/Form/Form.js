@@ -58,7 +58,7 @@ const Form = (props) => {
         variant="contained"
         color="primary"
         style={{ marginTop: "15px" }}
-        onClick={() => consultReportWeather(city, country.code)}
+        onClick={() => consultReportWeather(city, country.alpha2Code)}
         disabled={loading || city === "" ? true : false}
       >
         Consultar Clima

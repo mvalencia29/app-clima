@@ -21,7 +21,7 @@ const Weather = ({weather}) => {
 
   useEffect(() => {
     chooseImage(icon);
-  }, []);
+  }, [icon]);
 
   const chooseImage = (icon) => {
     const imageUrl = images.filter(
