@@ -27,12 +27,12 @@ const Main = (props) => {
   });
 
   useEffect(() => {
-    async function handlegetCountries() {
+    /*async function handlegetCountries() {
       setLoading(true);
       await getCountries(countries, setCountries);
       setLoading(false);
     }
-    handlegetCountries();
+    handlegetCountries();*/
   }, []);
 
   const consultCities = async (countryCode) => {
