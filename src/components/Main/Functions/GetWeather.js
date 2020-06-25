@@ -28,9 +28,9 @@ export default async function getCountries(
         main: response.weather[0].main,
         description: response.weather[0].description,
         icon: response.weather[0].icon,
-        temp: response.main.temp,
-        temp_min: response.main.temp_min,
-        temp_max: response.main.temp_max,
+        temp: [parseFloat(response.main.temp - 273.15).toFixed(2)],
+        temp_min: [parseFloat(response.main.temp_min - 273.15).toFixed(2)],
+        temp_max: [parseFloat(response.main.temp_max - 273.15).toFixed(2)],
         city,
         countryCode,
       });

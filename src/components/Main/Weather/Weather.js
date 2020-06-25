@@ -13,11 +13,14 @@ import {
 } from "./Styles";
 import images from "../../../Constants/ImagesWeathers";
 
-const Weather = () => {
+const Weather = ({weather}) => {
+
+  const { main, description, icon, temp, temp_min, temp_max, city, countryCode } = weather;
+
   const [url, setUrl] = useState("");
 
   useEffect(() => {
-    chooseImage("04n");
+    chooseImage(icon);
   }, []);
 
   const chooseImage = (icon) => {
@@ -30,25 +33,25 @@ const Weather = () => {
   return (
     <WeatherContainer>
       <WeatherTitle>
-        <WeatherTitleCity>Bogota</WeatherTitleCity>|
-        <WeatherTitleCountry>co</WeatherTitleCountry>
+        <WeatherTitleCity>{city}</WeatherTitleCity>|
+        <WeatherTitleCountry>{countryCode}</WeatherTitleCountry>
       </WeatherTitle>
       <WeatherContent>
         <img src={url} width="160px" height="160px" alt="Imagen" />
         <WeatherContentText>
           <WeatherContentTextTemperature>
-            12.28 °C
+            {temp} °C
           </WeatherContentTextTemperature>
           <WeatherContentTextMaxTemperature>
-            Min : 12.28 °C
+            Min : {temp_min} °C
           </WeatherContentTextMaxTemperature>
           <WeatherContentTextMinTemperature>
-            Max : 12.28 °C
+            Max : {temp_max} °C
           </WeatherContentTextMinTemperature>
         </WeatherContentText>
       </WeatherContent>
       <WeatherContentTextFooter>
-        Clouds , scattered clouds
+        {main} , {description}
       </WeatherContentTextFooter>
     </WeatherContainer>
   );

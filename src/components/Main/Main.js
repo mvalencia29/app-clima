@@ -72,7 +72,7 @@ const Main = (props) => {
         loading={loading}
         consultReportWeather={consultReportWeather}
       />
-      <Weather />
+      {weather.correct ? <Weather weather={weather}/> : null}
       <Snackbar
         open={showAlert}
         autoHideDuration={2000}

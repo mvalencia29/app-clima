@@ -7,7 +7,6 @@ export default async function callApiWeather(city, countryCode) {
     console.log(response);
     return await response.json();
   } catch (error) {
-    return error.message.toString();
-    //return "Hubo un Error";
+    return "Hubo un Error";
   }
 }
