@@ -5,16 +5,11 @@ import Button from "@material-ui/core/Button";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const Form = (props) => {
-  const {
-    countries,
-    loading,
-    cities,
-    consultReportWeather,
-  } = props;
+  const { countries, loading, consultReportWeather } = props;
 
   const [formData, setDataForm] = useState({
     country: null,
-    city: null,
+    city: "",
   });
 
   const { country, city } = formData;
@@ -39,34 +34,21 @@ const Form = (props) => {
         )}
         disabled={loading ? true : false}
       />
-      <Autocomplete
-        value={country === null ? null : city}
-        onChange={(event, newValue) => {
-          setDataForm({ ...formData, city: newValue });
-        }}
-        options={cities.data}
-        getOptionLabel={(option) =>
-          typeof option === "string" ? option : option.city
-        }
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            margin="normal"
-            label="Ciudad"
-            variant="outlined"
-          />
-        )}
+      <TextField
+        fullWidth
+        value={city}
+        label="Ciudad"
+        variant="outlined"
+        margin="normal"
         disabled={country === null || loading ? true : false}
-        name="city"
       />
       <Button
         fullWidth
         variant="contained"
         color="primary"
         style={{ marginTop: "15px" }}
-        disabled={loading ? true : false}
-        onClick={() => consultReportWeather(city.city, country.code)}
-        disabled={city == null || city == [] ? true : false}
+        onClick={() => consultReportWeather(city, country.code)}
+        disabled={loading || city === "" ? true : false}
       >
         Consultar Clima
       </Button>

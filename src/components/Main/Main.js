@@ -5,7 +5,6 @@ import MainContainer from "./Styles";
 import Form from "./Form/Form";
 import Weather from "./Weather/Weather";
 import getCountries from "./Functions/GetCountries";
-import getCities from "./Functions/GetCities";
 import getWeather from "./Functions/GetWeather";
 
 function Alert(props) {
