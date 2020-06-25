@@ -16,7 +16,7 @@ const Form = (props) => {
 
   useEffect(() => {
     if (country !== null) {
-      consultCities();
+      consultCities(country.code);
     } else {
       setDataForm({ ...formData, city: null });
     }

@@ -33,8 +33,9 @@ const Main = (props) => {
     }, 4000);
   }, []);
 
-  const consultCities = () => {
+  const consultCities = (countryCode) => {
     setLoading(true);
+    console.log(countryCode);
     setTimeout(() => {
       setLoading(false);
     }, 4000);
