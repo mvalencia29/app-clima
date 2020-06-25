@@ -1,11 +1,10 @@
-export async function callApiCities() {
-  try {
-        
-  } catch (error) {}
-}
+import { urlApiGetCities } from "../Constants/Constants";
 
-export async function analyzeResponseApiCities() {
-    try {
-  
-    } catch (error) {}
+export default async function callApiCountry() {
+  try {
+    const response = await fetch(urlApiGetCities());
+    return await response.json();
+  } catch (error) {
+    return "Hubo un Error";
   }
+}
