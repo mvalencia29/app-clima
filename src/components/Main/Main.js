@@ -5,6 +5,7 @@ import MainContainer from "./Styles";
 import Form from "./Form/Form";
 import Weather from "./Weather/Weather";
 import getCountries from "./Functions/GetCountries";
+import getCities from "./Functions/GetCities";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -20,32 +21,34 @@ const Main = (props) => {
     data: [],
   });
 
-  const [city, setCities] = useState({
+  const [cities, setCities] = useState({
     error: false,
     data: [],
   });
 
   useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      getCountries(countries, setCountries);
+    async function handlegetCountries() {
+      setLoading(true);
+      await getCountries(countries, setCountries);
       setLoading(false);
-    }, 4000);
+    }
+    handlegetCountries();
   }, []);
 
-  const consultCities = (countryCode) => {
+  const consultCities = async (countryCode) => {
     setLoading(true);
-    console.log(countryCode);
-    setTimeout(() => {
-      setLoading(false);
-    }, 4000);
+    await getCities(countryCode, cities, setCities);
+    setLoading(false);
   };
 
   useEffect(() => {
-    if (countries.error || city.error) {
-      setShowAlert(true);
+    function handleError() {
+      if (countries.error || cities.error) {
+        setShowAlert(true);
+      }
     }
-  }, [countries.error, city.error]);
+    handleError();
+  }, [countries.error, cities.error]);
 
   const handleClose = () => {
     setShowAlert(false);

@@ -12,8 +12,8 @@ export const urlApiGetCities = (codeCountry, region) =>
   `http://battuta.medunes.net/api/city/${codeCountry}/search/?region=${region}&key=${apiKeyBattutaMedunes}`;
 
 //Url to get Regions
-export const urlApiGetRegions = () =>
-  `http://battuta.medunes.net/api/country/all/?key=${apiKeyBattutaMedunes}`;
+export const urlApiGetRegions = (codeCountry) =>
+  `http://battuta.medunes.net/api/region/${codeCountry}/all/?key=${apiKeyBattutaMedunes}`;
 
 //Url to get the weather
 export const urlApiGetWeather = (city, countryCode) =>
