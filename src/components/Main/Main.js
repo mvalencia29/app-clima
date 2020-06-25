@@ -26,10 +26,6 @@ const Main = (props) => {
     data: [],
   });
 
-  const [cities, setCities] = useState({
-    data: [],
-  });
-
   const [weather, setWeather] = useState({
     correct: false,
     main: "",
@@ -50,12 +46,6 @@ const Main = (props) => {
     }
     handlegetCountries();
   }, []);
-
-  const consultCities = async (countryCode) => {
-    setLoading(true);
-    await getCities(countryCode, cities, setCities, setError);
-    setLoading(false);
-  };
 
   useEffect(() => {
     function handleError() {
@@ -81,9 +71,6 @@ const Main = (props) => {
       <Form
         countries={countries}
         loading={loading}
-        consultCities={consultCities}
-        cities={cities}
-        setCities={setCities}
         consultReportWeather={consultReportWeather}
       />
       <Weather />

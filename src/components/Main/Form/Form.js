@@ -8,9 +8,7 @@ const Form = (props) => {
   const {
     countries,
     loading,
-    consultCities,
     cities,
-    setCities,
     consultReportWeather,
   } = props;
 
@@ -20,18 +18,6 @@ const Form = (props) => {
   });
 
   const { country, city } = formData;
-
-  useEffect(() => {
-    if (country !== null) {
-      consultCities(country.code);
-    } else {
-      setDataForm({ ...formData, city: null });
-      setCities({
-        ...cities,
-        data: [],
-      });
-    }
-  }, [country]);
 
   return (
     <FormContainer>
