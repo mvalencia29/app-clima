@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const Form = (props) => {
-  const { countries, loading, consultCities } = props;
+  const { countries, loading, consultCities, cities, setCities } = props;
 
   const [formData, setDataForm] = useState({
     country: null,
@@ -19,6 +19,10 @@ const Form = (props) => {
       consultCities(country.code);
     } else {
       setDataForm({ ...formData, city: null });
+      setCities({
+        ...cities,
+        data: [],
+      });
     }
   }, [country]);
 
@@ -47,9 +51,9 @@ const Form = (props) => {
         onChange={(event, newValue) => {
           setDataForm({ ...formData, city: newValue });
         }}
-        options={countries.data}
+        options={cities.data}
         getOptionLabel={(option) =>
-          typeof option === "string" ? option : option.name
+          typeof option === "string" ? option : option.city
         }
         renderInput={(params) => (
           <TextField

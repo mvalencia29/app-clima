@@ -60,6 +60,8 @@ const Main = (props) => {
         countries={countries}
         loading={loading}
         consultCities={consultCities}
+        cities={cities}
+        setCities={setCities}
       />
       <Weather />
       <Snackbar

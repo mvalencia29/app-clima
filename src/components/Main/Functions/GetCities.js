@@ -10,8 +10,8 @@ export default async function getCities(codeCountry, cities, setCities) {
     });
     return;
   } else {
-    const cities = await getCitiesByRegion(codeCountry, regions);
-    if (cities == "Hubo un Error") {
+    const citiesArray = await getCitiesByRegion(codeCountry, regions);
+    if (citiesArray == "Hubo un Error") {
       setCities({
         error: true,
         data: [],
@@ -20,7 +20,7 @@ export default async function getCities(codeCountry, cities, setCities) {
     } else {
       setCities({
         ...cities,
-        data: cities,
+        data: citiesArray,
       });
     }
   }

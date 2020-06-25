@@ -1,5 +1,5 @@
 //Api Key Battuta Medunes
-const apiKeyBattutaMedunes = "64ec6719decce6d7d27967711d04d84c";
+const apiKeyBattutaMedunes = "2d9d6254196acef22eb069aae9b79987";
 
 //Api Key Openweathermap
 const apiKeyOpenweathermap = "64ec6719decce6d7d27967711d04d84c";
