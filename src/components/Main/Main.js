@@ -6,6 +6,7 @@ import Form from "./Form/Form";
 import Weather from "./Weather/Weather";
 import getCountries from "./Functions/GetCountries";
 import getCities from "./Functions/GetCities";
+import getWeather from "./Functions/GetWeather";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -16,42 +17,63 @@ const Main = (props) => {
 
   const [showAlert, setShowAlert] = useState(false);
 
-  const [countries, setCountries] = useState({
+  const [error, setError] = useState({
     error: false,
+    message: "",
+  });
+
+  const [countries, setCountries] = useState({
     data: [],
   });
 
   const [cities, setCities] = useState({
-    error: false,
     data: [],
   });
 
+  const [weather, setWeather] = useState({
+    correct: false,
+    main: "",
+    description: "",
+    icon: "",
+    temp: "",
+    temp_min: "",
+    temp_max: "",
+    city: "",
+    countryCode: "",
+  });
+
   useEffect(() => {
-    /*async function handlegetCountries() {
+    async function handlegetCountries() {
       setLoading(true);
-      await getCountries(countries, setCountries);
+      await getCountries(countries, setCountries, setError);
       setLoading(false);
     }
-    handlegetCountries();*/
+    handlegetCountries();
   }, []);
 
   const consultCities = async (countryCode) => {
     setLoading(true);
-    await getCities(countryCode, cities, setCities);
+    await getCities(countryCode, cities, setCities, setError);
     setLoading(false);
   };
 
   useEffect(() => {
     function handleError() {
-      if (countries.error || cities.error) {
+      if (error.error) {
         setShowAlert(true);
       }
     }
     handleError();
-  }, [countries.error, cities.error]);
+  }, [error]);
 
   const handleClose = () => {
     setShowAlert(false);
+  };
+
+  const consultReportWeather = async (city, countryCode) => {
+    setLoading(true);
+    await getWeather(city, countryCode, setWeather, setError);
+    setLoading(false);
   };
 
   return (
@@ -62,6 +84,7 @@ const Main = (props) => {
         consultCities={consultCities}
         cities={cities}
         setCities={setCities}
+        consultReportWeather={consultReportWeather}
       />
       <Weather />
       <Snackbar
@@ -71,7 +94,7 @@ const Main = (props) => {
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert severity="error" onClose={handleClose}>
-          Hubo un error por favor intentelo de nuevo
+          {error.message}
         </Alert>
       </Snackbar>
     </MainContainer>

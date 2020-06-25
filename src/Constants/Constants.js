@@ -2,7 +2,7 @@
 const apiKeyBattutaMedunes = "2d9d6254196acef22eb069aae9b79987";
 
 //Api Key Openweathermap
-const apiKeyOpenweathermap = "64ec6719decce6d7d27967711d04d84c";
+const apiKeyOpenweathermap = "607657c475a41b16540a4b97fa1ec010";
 
 //Url to get Countries
 export const urlApiGetCountries = `http://battuta.medunes.net/api/country/all/?key=${apiKeyBattutaMedunes}`;

@@ -11,22 +11,20 @@ import {
   WeatherContentTextMinTemperature,
   WeatherContentTextFooter,
 } from "./Styles";
+import images from "../../../Constants/ImagesWeathers";
 
 const Weather = () => {
   const [url, setUrl] = useState("");
 
   useEffect(() => {
-    chooseImage();
+    chooseImage("04n");
   }, []);
 
   const chooseImage = (icon) => {
-    switch(icon){
-      case : 
-
-    }
-    if(icon === "03n" || icon === "03d"){
-
-    }
+    const imageUrl = images.filter(
+      (image) => image.id === icon.substring(0, 2)
+    );
+    setUrl(imageUrl[0].image);
   };
 
   return (
@@ -36,12 +34,7 @@ const Weather = () => {
         <WeatherTitleCountry>co</WeatherTitleCountry>
       </WeatherTitle>
       <WeatherContent>
-        <img
-          src="https://image.flaticon.com/icons/svg/143/143792.svg"
-          width="160px"
-          height="160px"
-          alt="Imagen"
-        />
+        <img src={url} width="160px" height="160px" alt="Imagen" />
         <WeatherContentText>
           <WeatherContentTextTemperature>
             12.28 °C

@@ -1,19 +1,30 @@
 import callApiRegion from "../../../services/Region";
 import urlApiGetCities from "../../../services/Cities";
 
-export default async function getCities(codeCountry, cities, setCities) {
+export default async function getCities(
+  codeCountry,
+  cities,
+  setCities,
+  setError
+) {
   const regions = await callApiRegion(codeCountry);
   if (regions == "Hubo un Error") {
-    setCities({
+    setError({
       error: true,
+      message: "Hubo un error por favor intentelo de nuevo",
+    });
+    setCities({
       data: [],
     });
     return;
   } else {
     const citiesArray = await getCitiesByRegion(codeCountry, regions);
     if (citiesArray == "Hubo un Error") {
-      setCities({
+      setError({
         error: true,
+        message: "Hubo un error por favor intentelo de nuevo",
+      });
+      setCities({
         data: [],
       });
       return;

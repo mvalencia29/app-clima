@@ -1,6 +1,6 @@
 import { urlApiGetCities } from "../Constants/Constants";
 
-export default async function callApiRegion(codeCountry, region) {
+export default async function callApiCities(codeCountry, region) {
   try {
     const response = await fetch(urlApiGetCities(codeCountry, region));
     return await response.json();

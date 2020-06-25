@@ -5,7 +5,14 @@ import Button from "@material-ui/core/Button";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const Form = (props) => {
-  const { countries, loading, consultCities, cities, setCities } = props;
+  const {
+    countries,
+    loading,
+    consultCities,
+    cities,
+    setCities,
+    consultReportWeather,
+  } = props;
 
   const [formData, setDataForm] = useState({
     country: null,
@@ -72,6 +79,8 @@ const Form = (props) => {
         color="primary"
         style={{ marginTop: "15px" }}
         disabled={loading ? true : false}
+        onClick={() => consultReportWeather(city.city, country.code)}
+        disabled={city == null || city == [] ? true : false}
       >
         Consultar Clima
       </Button>
