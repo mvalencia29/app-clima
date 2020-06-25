@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const Form = (props) => {
+
   const { countries, loading, consultReportWeather } = props;
 
   const [formData, setDataForm] = useState({
@@ -12,7 +13,14 @@ const Form = (props) => {
     city: "",
   });
 
+
   const { country, city } = formData;
+
+  useEffect(() => {
+    if(country == null){
+      setDataForm({...formData, city : ""}); 
+    }
+  }, [country]);
 
   return (
     <FormContainer>
@@ -37,6 +45,9 @@ const Form = (props) => {
       <TextField
         fullWidth
         value={city}
+        onChange={(e) => {
+          setDataForm({ ...formData, city: e.target.value });
+        }}
         label="Ciudad"
         variant="outlined"
         margin="normal"
